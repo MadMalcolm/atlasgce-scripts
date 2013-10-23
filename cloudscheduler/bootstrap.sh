@@ -53,6 +53,7 @@ mount {'/var/cache/cvmfs2':
     ensure => mounted,
     dump => 1,
     pass => 2,
+    before => Class['cvmfs::client'],
 }
 
 # Cache for scheduler
@@ -63,6 +64,7 @@ mount {'/var/lib/condor':
     ensure => mounted,
     dump => 1,
     pass => 2,
+    before => Class['condor::client'],
 }
 
 class { 'gce_node':
