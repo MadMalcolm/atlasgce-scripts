@@ -13,6 +13,7 @@ error()
 
 mount_script=/var/run/mount.sh
 node_template=/var/run/node-template.pp
+puppet_log=/root/puppet.log
 
 cat << "__EOF__" > $mount_script
 #!/usr/bin/env sh
@@ -117,4 +118,4 @@ git clone https://github.com/MadMalcolm/atlasgce-modules.git /etc/puppet/modules
 install_puppet_modules
 
 message "Fetching and applying node template..."
-puppet apply $node_template
+puppet apply $node_template --logdest $puppet_log
